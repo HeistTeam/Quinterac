@@ -1,0 +1,1 @@
+Error: Invalid deposit. Withdrawals must be the number of cents to withdraw, as a number.

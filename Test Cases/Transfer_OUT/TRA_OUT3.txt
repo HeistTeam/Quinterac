@@ -1,0 +1,1 @@
+Error: Invalid transfer. Transfer amount must be the number of cents to move, as a number.

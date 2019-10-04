@@ -1,0 +1,1 @@
+Error: Invalid deposit. Deposits must be the number of cents to deposit, as a number.

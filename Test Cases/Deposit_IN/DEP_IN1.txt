@@ -1,0 +1,6 @@
+login
+machine
+deposit
+ABCDEFG
+100
+logout
