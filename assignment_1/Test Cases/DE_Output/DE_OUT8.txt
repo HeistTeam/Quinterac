@@ -1,0 +1,1 @@
+Invalid submission: Transfer transaction cannot involve the newly deleted account. Please try transfering with other accounts.
