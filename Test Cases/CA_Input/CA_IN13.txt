@@ -1,0 +1,9 @@
+login
+agent
+createacct
+1234567
+Michael
+withdraw
+1234567
+100
+logout

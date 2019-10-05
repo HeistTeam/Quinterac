@@ -1,0 +1,1 @@
+Invalid submission: Account Name cannot start with a " " space character. Please enter a new account name that starts with an alphanumerical.
