@@ -1,0 +1,2 @@
+Transferred $10000.00 from account 1234567 to account 3334333
+Error: Invalid transfer total. No more than $10000 can be transferred from a single account in one day in ATM mode.

@@ -1,0 +1,11 @@
+login
+machine
+transfer
+1234567
+3334333
+1000000
+transfer
+6654566
+3334333
+1000000
+logout

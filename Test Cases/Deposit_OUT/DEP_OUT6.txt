@@ -1,0 +1,3 @@
+Deposited $2000.00 to 12345678
+Deposited $3000.00 to 12345678
+Error: Invalid deposit total. No more than $5000 can be deposited into a single account in one day in ATM mode.

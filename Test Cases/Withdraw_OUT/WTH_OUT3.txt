@@ -1,0 +1,1 @@
+Error: Withdrawals above $1000.00 are forbidden in ATM mode.

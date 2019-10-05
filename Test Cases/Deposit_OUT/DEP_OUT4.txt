@@ -1,0 +1,2 @@
+Deposited $4000.00 to account 1234567
+Error: Invalid deposit amount. Deposits over $999999.99 are forbidden.

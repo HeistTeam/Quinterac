@@ -1,0 +1,2 @@
+Withdrew $4000 from account 1234567
+Error: Withdrawals above $999,999.99 are forbidden.

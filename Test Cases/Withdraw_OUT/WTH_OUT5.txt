@@ -1,0 +1,3 @@
+Withdrew $2000.00 from account 1234567
+Withdrew $3000.00 from account 1234567
+Error: Invalid withdrawal total. No more than $5000 can be withdrawn from a single account in one day in ATM mode.
