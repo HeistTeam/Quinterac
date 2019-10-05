@@ -1,0 +1,1 @@
+Invalid submission: Account Name cannot end with a " " space character. Please enter a new account name that ends with an aplhanumerical.

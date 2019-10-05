@@ -1,0 +1,1 @@
+Invalid submission: Account Number cannot contain less than 7 digits. Please enter a new account number with exactly 7 digits.
