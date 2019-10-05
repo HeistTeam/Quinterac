@@ -1,1 +1,0 @@
-Invalid submission: Account Name cannot contain more than 30 digits. Please enter a new account name with between 3-30 characters.

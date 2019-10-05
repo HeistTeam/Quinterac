@@ -1,9 +1,0 @@
-login
-agent
-createacct
-1234567
-Michael
-Deposit
-1234567
-100
-logout

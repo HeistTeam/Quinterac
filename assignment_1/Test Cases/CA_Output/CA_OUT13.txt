@@ -1,1 +1,0 @@
-Invalid submission: Withdraw transaction cannot involve the newly created account. Please try withdrawing from another account.

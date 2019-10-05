@@ -1,1 +1,0 @@
-Cannot delete account while in atm mode. Please enter agent mode and try again.

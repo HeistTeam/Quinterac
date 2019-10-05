@@ -1,1 +1,0 @@
-Invalid submission: Transfer transaction cannot involve the newly created account. Please try transfering with other accounts.
