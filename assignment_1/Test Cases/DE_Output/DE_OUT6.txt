@@ -1,1 +1,0 @@
-Invalid submission: Deposit transaction cannot involve the newly deleted account. Please try depositing into another account.

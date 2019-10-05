@@ -1,1 +1,0 @@
-Invalid submission: Delete transaction cannot involve the newly created account.
