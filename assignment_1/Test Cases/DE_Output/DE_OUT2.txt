@@ -1,0 +1,3 @@
+Succesfully in agent mode. following commands are now available:
+Create Account
+Delete Account

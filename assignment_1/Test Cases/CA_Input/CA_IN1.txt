@@ -1,0 +1,6 @@
+login
+atm
+createacct
+1234567
+Michael
+logout
