@@ -1,1 +1,0 @@
-Invalid submission: Account Number must be unique. Please enter a new account number that does not already exist.

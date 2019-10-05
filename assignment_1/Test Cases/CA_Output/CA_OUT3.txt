@@ -1,1 +1,0 @@
-Invalid submission: Account Number cannot start with a 0. Please enter a new account number
