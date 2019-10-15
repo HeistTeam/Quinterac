@@ -39,25 +39,28 @@ class frontend:
             
         i = raw_input('Please enter the type of banking today: agent or atm: ')
         self.mode = i
+        session = 0
         if self.mode == 'agent':
             session = agent.agent(self.account_list)
-            sys.stdout.write('Please enter the transaction you would like:' + '\n')
-            sys.stdout.write('createacct, deleteacct, transfer, deposit, withdraw, logoff')
         elif self.mode == 'atm':
-	    session = atm.atm(self.account_list)
-            sys.stdout.write('Please enter the transaction you would like:' + '\n')
-            sys.stdout.write('transfer, deposit, withdraw, logoff')
-            
+            session = atm.atm(self.account_list)
+        
         while True:
+            if self.mode == 'agent':
+                sys.stdout.write('Please enter the transaction you would like:' + '\n')
+                sys.stdout.write('createacct, deleteacct, transfer, deposit, withdraw, logoff')
+            elif self.mode == 'atm':
+                sys.stdout.write('Please enter the transaction you would like:' + '\n')
+                sys.stdout.write('transfer, deposit, withdraw, logoff')
             i = raw_input('\n')
-            if i == 'creatacct':
+            if i == 'createacct':
                 create = session.createacct()
                 if create != 0:
-                    self.summary_writer(session.createacct())
+                    self.summary_writer(create)
             elif i == 'deleteacct':
                 destroy = session.deleteacct()
                 if destroy != 0:
-                    self.summary_writer(session.deleteacct())
+                    self.summary_writer(destroy)
             elif i == 'transfer':
                 self.summary_writer(session.transfer())
             elif i == 'deposit':
@@ -67,7 +70,8 @@ class frontend:
             elif i == 'logoff':
                 self.logoff()
                 break
-
+            sys.stdout.write('\n')
+            
     """ log off function
         closes the menu interface
     """

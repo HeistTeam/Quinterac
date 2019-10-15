@@ -44,6 +44,7 @@ class atm:
 				pass
 			break#If the amount is legal, keep going
 		'''
+		sys.stdout.write('you have deposited ' + depAmount+' cents to '+destAccount)
 		#here we set up the transaction string
 		depString = 'DEP ' + str(destAccount) + ' ' +  str(depAmount) + ' ' + '0000000  ***'
 		return depString
@@ -65,7 +66,8 @@ class atm:
 				pass
 			break
 		'''
-		wdrString = 'WDR ' +  + '0000000' +  str(wdrAmount) + ' ' + str(sourceAccount) + ' ***'
+		sys.stdout.write('you have withdraw ' + wdrAmount+' cents to '+sourceAccount)
+		wdrString = 'WDR ' + '0000000' +  str(wdrAmount) + ' ' + str(sourceAccount) + ' ***'
 		return wdrString
 		
 		
@@ -87,7 +89,7 @@ class atm:
 				pass
 			break
 		'''
-		traString = 'TRA ' + str(destAccount) + ' ' + str(traAmount) + ' ' + + str(sourceAccount) + ' ***'
+		traString = 'TRA ' + str(destAccount) + ' ' + str(traAmount) + ' ' + str(sourceAccount) + ' ***'
 		return traString
 		
 	'''

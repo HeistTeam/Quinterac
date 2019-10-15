@@ -44,7 +44,7 @@ class agent:
 		'''
 		depString = "NEW " + str(newaccount) + ' ' + '***' + ' ' + '***' + str(newname)
 
-		return 0
+		return depString
 
 	'''
 	This is used to delete an existing account.
@@ -60,7 +60,7 @@ class agent:
 
 		depString = 'DEL ' + str(deleteaccount) + ' ' + '***' + '***' + str(deletename)
 
-		return 0 
+		return depString 
 
 	'''
 	For depositing funds
@@ -101,7 +101,7 @@ class agent:
 				pass
 			break
 		'''
-		wdrString = 'WDR ' +  + '0000000' +  str(wdrAmount) + ' ' + str(sourceAccount) + ' ***'
+		wdrString = 'WDR ' + '0000000' +  str(wdrAmount) + ' ' + str(sourceAccount) + ' ***'
 		return wdrString
 		
 		
@@ -123,7 +123,7 @@ class agent:
 				pass
 			break
 		'''
-		traString = 'TRA ' + str(destAccount) + ' ' + str(traAmount) + ' ' + + str(sourceAccount) + ' ***'
+		traString = 'TRA ' + str(destAccount) + ' ' + str(traAmount) + ' ' + str(sourceAccount) + ' ***'
 		return traString
 		
 		
