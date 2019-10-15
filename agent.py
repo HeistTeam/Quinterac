@@ -27,7 +27,7 @@ class agent:
 	'''
 	This is used to create a new account.
 	It will check if the account number does not currently
-	exist within the accounList.
+	exist within the accountList.
 	If it does not, then the account will be created.
 	Valid accounts will be added to the transaction summary file.
 	'''
@@ -47,10 +47,10 @@ class agent:
 		return 0
 
 	'''
-	This is used to create a new account.
-	It will check if the account number does not currently
-	exist within the accounList.
-	If it does not, then the account will be created.
+	This is used to delete an existing account.
+	It will check if the account number does currently
+	exist within the accountList.
+	If it does, then the account will be deleted.
 	Valid accounts will be added to the transaction summary file.
 	'''
 		

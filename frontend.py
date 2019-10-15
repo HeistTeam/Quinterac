@@ -39,12 +39,10 @@ class frontend:
             
         i = raw_input('Please enter the type of banking today: agent or atm: ')
         if self.mode == 'agent':
-            # agent class initization (self.account_list)
 			session = agent(self.account_list)
             sys.stdout.write('Please enter the transaction you would like:' + '\n')
             sys.stdout.write('createacct, deleteacct, transfer, deposit, withdraw, logoff')
         elif self.mode == 'atm':
-            # atm class initization (self.account_list)
 			session = atm(self.account_list)
             sys.stdout.write('Please enter the transaction you would like:' + '\n')
             sys.stdout.write('transfer, deposit, withdraw, logoff')
