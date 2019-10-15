@@ -1,6 +1,6 @@
 import sys
-# import atm
-# import agent
+import atm
+import agent
 
 """ class frontend
 the main interface of the system.
@@ -39,12 +39,10 @@ class frontend:
             
         i = raw_input('Please enter the type of banking today: agent or atm: ')
         if self.mode == 'agent':
-            # agent class initization (self.account_list)
-			#session = agent(self.account_list)
+			session = agent(self.account_list)
             sys.stdout.write('Please enter the transaction you would like:' + '\n')
             sys.stdout.write('createacct, deleteacct, transfer, deposit, withdraw, logoff')
         elif self.mode == 'atm':
-            # atm class initization (self.account_list)
 			session = atm(self.account_list)
             sys.stdout.write('Please enter the transaction you would like:' + '\n')
             sys.stdout.write('transfer, deposit, withdraw, logoff')
@@ -54,12 +52,12 @@ class frontend:
             if i == 'creatacct':
                 create = session.createacct()
 				if create != 0:
-					self.summary_writer(create)
+					self.summary_writer(session.createacct())
                 pass
             elif i == 'deleteacct':
                 destroy = session.deleteacct()
 				if destroy != 0:
-					self.summary_writer(destroy)
+					self.summary_writer(session.deleteacct())
                 pass
             elif i == 'transfer':
                 self.summary_writer(session.transfer())
