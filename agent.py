@@ -1,5 +1,5 @@
 import sys
-
+import atm
 """ class agent
 This class handles all tranactions a user can make - create account, delete account
 withdrawm deposit, and transfer.
@@ -13,16 +13,16 @@ class variables:
 	session; also half of daily transfer limit
 
 """
-class agent:
+class agent(atm.atm):
 	"""class constructor
 		sets up the class variables.
 	"""
 	def __init__(self,accountList):
 		self.account_list = accountList
-		self.DEP_LIMIT = 99999999999
-		self.WDR_LIMIT = 99999999999
-		self.TRA_LIMIT = 99999999999
-		self.DAILY_LIMIT = 99999999999
+		self.DEP_LIMIT = 99999999
+		self.WDR_LIMIT = 99999999
+		self.TRA_LIMIT = 99999999
+		self.DAILY_LIMIT = 99999999
 		return
 	'''
 	This is used to create a new account.
@@ -32,8 +32,8 @@ class agent:
 	Valid accounts will be added to the transaction summary file.
 	'''
 	def createacct(self):
-		newaccount  = raw_input('Please enter the account number for new account: ')
-		newname = raw_input('Please enter the account name for new account: ')
+		newaccount  = raw_input('Please enter the account number for new account: ') 
+		newname = raw_input('Please enter the account name for new account: ') 
 
 		'''
 		while True:
@@ -43,6 +43,8 @@ class agent:
             break #If the account number does not exist  in account list, continue
 		'''
 		depString = "NEW " + str(newaccount) + ' ' + '***' + ' ' + '***' + str(newname)
+
+		sys.stdout.write('New account created with account number: ' + newaccount + ' and account name: ' + newname)
 
 		return depString
 
@@ -60,87 +62,6 @@ class agent:
 
 		depString = 'DEL ' + str(deleteaccount) + ' ' + '***' + '***' + str(deletename)
 
+		sys.stdout.write('Account deleted with account number: ' + deleteaccount + ' and account name: ' + deletename)
+
 		return depString 
-
-	'''
-	For depositing funds
-	Will check whether the account and deposit amount are valid, and if
-	the daily deposit limit has been met.
-	Valid deposits will return a transaction string detailing the deposit.
-	'''
-
-	def deposit(self):
-		destAccount = self.askForAcct('Please enter the account number to deposit to: ')
-		depAmount = raw_input('Enter amount to deposit, in cents: ')
-		'''
-		while True:
-			depAmount = raw_input('Enter amount to deposit, in cents: ')
-			if depAmount > DEP_LIMIT:
-				sys.stdout.write('That amount is too large; maximum deposit is' + str(self.DEP_LIMIT))
-				pass
-			break#If the amount is legal, keep going
-		'''
-
-		depString = 'DEP ' + str(destAccount) + ' ' +  str(depAmount) + ' ' + '0000000  ***'
-		return depString
-		
-	'''
-	For withdrawing funds
-	Will check validity of source account number and withdrawal amount, and whether
-	the daily withdrawal limit has been met.
-	Valid withdrawals will return a transaction string.
-	'''
-	def withdraw(self):
-		sourceAccount = self.askForAcct('Please enter the account number to withdraw from: ')
-		wdrAmount = raw_input('Enter amount to withdraw, in cents: ')
-		'''
-		while True:
-			wdrAmount = raw_input('Enter amount to withdraw, in cents: ')
-			if wdrAmount > WDR_LIMIT:
-				sys.stdout.write('That amount is too large; maximum withdrawal is' + str(self.WDR_LIMIT))
-				pass
-			break
-		'''
-		wdrString = 'WDR ' + '0000000' +  str(wdrAmount) + ' ' + str(sourceAccount) + ' ***'
-		return wdrString
-		
-		
-	'''
-	For transferring funds from one account to another.
-	Will check validity of both accounts involved along with the transfer amount,
-	including whether the daily transfer limit has been met for the source account.
-	Valid transfers will return a transaction string.
-	'''
-	def transfer(self):
-		sourceAccount = self.askForAcct('Please enter the account number to transfer from: ')
-		destAccount = self.askForAcct('Please enter the account number to transfer to: ')
-		traAmount = raw_input('Enter amount to transfer, in cents: ')
-		'''
-		while True:
-			traAmount = raw_input('Enter amount to transfer, in cents: ')
-			if traAmount > TRA_LIMIT:
-				sys.stdout.write('That amount is too large; maximum transfer is' + str(self.TRA_LIMIT))
-				pass
-			break
-		'''
-		traString = 'TRA ' + str(destAccount) + ' ' + str(traAmount) + ' ' + str(sourceAccount) + ' ***'
-		return traString
-		
-		
-	'''
-	A helper method that asks for an account number and checks for its existence
-	in the account list.
-	Or at least it will at some point!
-	'''
-	def askForAcct(self,prompt):
-		while True:
-			accountNum = raw_input(prompt)
-			#if acctNum not in accountList, stop and ask again
-			break
-		return accountNum
-		
-	'''
-	For future reference, have a method to take an acct number and transaction
-	type and return total money moved by that transaction
-	To test for daily limits
-	'''
