@@ -31,7 +31,7 @@ class agent:
 	If it does not, then the account will be created.
 	Valid accounts will be added to the transaction summary file.
 	'''
-	def createacct_1(self):
+	def createacct(self):
 		newaccount  = raw_input('Please enter the account number for new account: ')
 		newname = raw_input('Please enter the account name for new account: ')
 

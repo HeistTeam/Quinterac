@@ -38,12 +38,13 @@ class frontend:
                 break
             
         i = raw_input('Please enter the type of banking today: agent or atm: ')
+        self.mode = i
         if self.mode == 'agent':
-			session = agent(self.account_list)
+            session = agent.agent(self.account_list)
             sys.stdout.write('Please enter the transaction you would like:' + '\n')
             sys.stdout.write('createacct, deleteacct, transfer, deposit, withdraw, logoff')
         elif self.mode == 'atm':
-			session = atm(self.account_list)
+	    session = atm.atm(self.account_list)
             sys.stdout.write('Please enter the transaction you would like:' + '\n')
             sys.stdout.write('transfer, deposit, withdraw, logoff')
             
@@ -51,23 +52,18 @@ class frontend:
             i = raw_input('\n')
             if i == 'creatacct':
                 create = session.createacct()
-				if create != 0:
-					self.summary_writer(session.createacct())
-                pass
+                if create != 0:
+                    self.summary_writer(session.createacct())
             elif i == 'deleteacct':
                 destroy = session.deleteacct()
-				if destroy != 0:
-					self.summary_writer(session.deleteacct())
-                pass
+                if destroy != 0:
+                    self.summary_writer(session.deleteacct())
             elif i == 'transfer':
                 self.summary_writer(session.transfer())
-                pass
             elif i == 'deposit':
                 self.summary_writer(session.deposit())
-                pass
             elif i == 'withdraw':
                 self.summary_writer(session.withdraw())
-                pass
             elif i == 'logoff':
                 self.logoff()
                 break
