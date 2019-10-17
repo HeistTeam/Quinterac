@@ -35,7 +35,7 @@ class atm:
 	'''
 	def deposit(self):
 		destAccount = self.askForAcct('Please enter the account number to deposit to: ')
-		depAmount = raw_input('Enter amount to deposit, in cents: ')
+		depAmount = raw_input('Enter amount to deposit, in cents: ') 
 		'''
 		while True:
 			depAmount = raw_input('Enter amount to deposit, in cents: ')
@@ -44,7 +44,7 @@ class atm:
 				pass
 			break#If the amount is legal, keep going
 		'''
-		sys.stdout.write('you have deposited ' + depAmount+' cents to '+destAccount)
+		sys.stdout.write('You have successfully deposited ' + depAmount+' cents to account: '+destAccount)
 		#here we set up the transaction string
 		depString = 'DEP ' + str(destAccount) + ' ' +  str(depAmount) + ' ' + '0000000  ***'
 		return depString
@@ -66,7 +66,7 @@ class atm:
 				pass
 			break
 		'''
-		sys.stdout.write('you have withdraw ' + wdrAmount+' cents to '+sourceAccount)
+		sys.stdout.write('You have successfully withdrew ' + wdrAmount + ' cents from account: '+ sourceAccount)
 		wdrString = 'WDR ' + '0000000' +  str(wdrAmount) + ' ' + str(sourceAccount) + ' ***'
 		return wdrString
 		
@@ -89,6 +89,8 @@ class atm:
 				pass
 			break
 		'''
+		sys.stdout.write('You have successfully transfered: ' + traAmount + ' from account: ' + sourceAccount + 'to account: ' + destAccount)
+
 		traString = 'TRA ' + str(destAccount) + ' ' + str(traAmount) + ' ' + str(sourceAccount) + ' ***'
 		return traString
 		
