@@ -1,6 +1,6 @@
 import sys
-# import atm
-# import agent
+import atm
+import agent
 
 """ class frontend
 the main interface of the system.
@@ -46,17 +46,6 @@ class frontend:
             
         self.mode = i
         if self.mode == 'agent':
-<<<<<<< Updated upstream
-            # agent class initization (self.account_list)
-            sys.stdout.write('Please enter the transaction you would like:' + '\n')
-            sys.stdout.write('createacct, deleteacct, transfer, deposit, withdraw, logoff')
-        elif self.mode == 'atm':
-            # atm class initization (self.account_list)
-            sys.stdout.write('Please enter the transaction you would like:' + '\n')
-            sys.stdout.write('transfer, deposit, withdraw, logoff')
-            
-        while True:
-=======
             session = agent.agent(self.account_list)
         elif self.mode == 'machine':
             session = atm.atm(self.account_list)
@@ -68,38 +57,26 @@ class frontend:
             elif self.mode == 'machine':
                 sys.stdout.write('Please enter the transaction you would like:' + '\n')
                 sys.stdout.write('transfer, deposit, withdraw, logout')
->>>>>>> Stashed changes
             i = raw_input('\n')
-            if i == 'creatacct':
-                # agent.createaccount
-                pass
+             if i == 'createacct':
+                create = session.createacct()
+                if create != 0:
+                    self.summary_writer(create)
             elif i == 'deleteacct':
-                # agent.deleteaccount
-                pass
+                destroy = session.deleteacct()
+                if destroy != 0:
+                    self.summary_writer(destroy)
             elif i == 'transfer':
-                # atm.transfer
-                pass
+                self.summary_writer(session.transfer())
             elif i == 'deposit':
-                # atm.deposit
-                pass
+                self.summary_writer(session.deposit())
             elif i == 'withdraw':
-<<<<<<< Updated upstream
-                # atm.withdraw
-                pass
+                self.summary_writer(session.withdraw())
             elif i == 'logoff':
                 self.logoff()
                 break
-
-=======
-                self.summary_writer(session.withdraw())
-            elif i == 'logout':
-                self.logoff()
-                break
-            else
-                sys.stdout.write('Please enter a valid transaction.')
             sys.stdout.write('\n')
             
->>>>>>> Stashed changes
     """ log off function
         closes the menu interface
     """
