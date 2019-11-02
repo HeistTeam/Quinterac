@@ -46,9 +46,9 @@ class frontend:
             
         self.mode = i
         if self.mode == 'agent':
-            session = agent.agent(self.account_list)
-        elif self.mode == 'machine':
-            session = atm.atm(self.account_list)
+            session = agent.agent(self.account_list,self.summary)
+        elif self.mode == 'atm':
+            session = atm.atm(self.account_list,self.summary)
         
         while True:
             if self.mode == 'agent':
