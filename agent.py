@@ -6,6 +6,7 @@ withdrawm deposit, and transfer.
 
 class variables:
 	account_list: list of account numbers
+	summary: list of previous transactions in this session
 	DEP_LIMIT: maximum deposit size for agent mode
 	WDR_LIMI: maximum withdrawal for agent mode
 	TRA_LIMIT: maximum transfer size for agent mode
@@ -17,8 +18,9 @@ class agent(atm.atm):
 	"""class constructor
 		sets up the class variables.
 	"""
-	def __init__(self,accountList):
+	def __init__(self,accountList,summaryFile):
 		self.account_list = accountList
+		self.summary = summaryFile
 		self.DEP_LIMIT = 99999999
 		self.WDR_LIMIT = 99999999
 		self.TRA_LIMIT = 99999999
