@@ -40,13 +40,13 @@ class atm:
 			destAccount = self.askForAcct('Please enter the account number to deposit to: ')
 			depAmount = self.askForMoney('Enter amount to deposit, in cents: ', self.DEP_LIMIT) 
 			
-			runningTotal = depAmount + self.getTransactionTotal(sourceAccount,"WDR")
+			runningTotal = depAmount + self.getTransactionTotal(destAccount,"WDR")
 			if runningTotal > self.DAILY_LIMIT:
 				sys.stdout.write("You have exceeded the daily limit for deposits, " + self.DAILY_LIMIT + ", to this account. Please try again.\n")
 				continue
 			else:
 				break
-		sys.stdout.write('You have successfully deposited ' + depAmount+' cents to account: '+destAccount)
+		sys.stdout.write('You have successfully deposited ' + str(depAmount) +' cents to account: '+destAccount)
 		#here we set up the transaction string
 		depString = 'DEP ' + str(destAccount) + ' ' +  str(depAmount) + ' ' + '0000000  ***'
 		return depString
@@ -69,7 +69,7 @@ class atm:
 			else:
 				break
 
-		sys.stdout.write('You have successfully withdrawn ' + wdrAmount + ' cents from account: '+ sourceAccount)
+		sys.stdout.write('You have successfully withdrawn ' + str(wdrAmount) + ' cents from account: '+ sourceAccount)
 		wdrString = 'WDR ' + '0000000' +  str(wdrAmount) + ' ' + str(sourceAccount) + ' ***'
 		return wdrString
 		
@@ -93,7 +93,7 @@ class atm:
 			else:
 				break
 
-		sys.stdout.write('You have successfully transfered: ' + traAmount + ' from account: ' + sourceAccount + 'to account: ' + destAccount)
+		sys.stdout.write('You have successfully transfered: ' + str(traAmount) + ' from account: ' + sourceAccount + 'to account: ' + destAccount)
 
 		traString = 'TRA ' + str(destAccount) + ' ' + str(traAmount) + ' ' + str(sourceAccount) + ' ***'
 		return traString
@@ -120,17 +120,17 @@ class atm:
 			try:
 				accountNum = int(raw_input(prompt))
 			except:
-				sys.stdout.write('Account numbers must be 8-digit numbers. Please try again./n.')
+				sys.stdout.write('Account numbers must be 7-digit numbers. Please try again.\n.')
 				continue
 			tempNum = str(accountNum)
-			if len(tempNum) != 0 or tempNum[0] = '0':
-				sys.stdout.write('Account numbers must be 8 digits long and cannot begin with 0. Please try again./n')
+			if len(tempNum) != 7 or tempNum[0] == '0':
+				sys.stdout.write('Account numbers must be 7 digits long and cannot begin with 0. Please try again.\n')
 				continue
-			if tempNum not in self.accountLisr:
-				sys.stdout.write('This account does not currently exist. Please try another account./n')
+			if tempNum not in self.account_list:
+				sys.stdout.write('This account does not currently exist. Please try another account.\n')
 				continue
 			break
-		return accountNum
+		return tempNum
 		
 	'''
 	A helper method that asks for an amount of money as input. Checks that the input
@@ -141,10 +141,10 @@ class atm:
 			try:
 				money = int(raw_input(prompt))
 			except:
-				sys.stdout.write('Your inputted amount contained non-numeric characters. Please try again./n')
+				sys.stdout.write('Your inputted amount contained non-numeric characters. Please try again.\n')
 				continue
 			if money > limit:
-				sys.stdout.write('That amount is too large; maximum for this transaction is' + str(limit))
+				sys.stdout.write('That amount is too large; maximum for this transaction is' + str(limit) +'. Please try again. \n')
 				continue
 			break
 		return money
@@ -160,7 +160,7 @@ class atm:
 	
 	def getTransactionTotal(self,account,type):
 		total = 0
-		file = open(self.summmary,"r")
+		file = open(self.summary,"r")
 		for line in file:
 			chunks = line.split(" ")#chop the line into its component words
 			if chunks[0] == type:

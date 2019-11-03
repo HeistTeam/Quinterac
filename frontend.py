@@ -36,7 +36,7 @@ class frontend:
             if i == 'login':
                 self.summary_writer('login')
                 break
-            sys.stdout.write("Invalide input!")
+            sys.stdout.write("Invalid input!")
             
         while True:
             i = raw_input('Please enter the type of banking today: agent or machine: ')
@@ -47,7 +47,7 @@ class frontend:
         self.mode = i
         if self.mode == 'agent':
             session = agent.agent(self.account_list,self.summary)
-        elif self.mode == 'atm':
+        elif self.mode == 'machine':
             session = atm.atm(self.account_list,self.summary)
         
         while True:
@@ -58,7 +58,7 @@ class frontend:
                 sys.stdout.write('Please enter the transaction you would like:' + '\n')
                 sys.stdout.write('transfer, deposit, withdraw, logout')
             i = raw_input('\n')
-             if i == 'createacct':
+            if i == 'createacct':
                 create = session.createacct()
                 if create != 0:
                     self.summary_writer(create)
@@ -72,7 +72,7 @@ class frontend:
                 self.summary_writer(session.deposit())
             elif i == 'withdraw':
                 self.summary_writer(session.withdraw())
-            elif i == 'logoff':
+            elif i == 'logout':
                 self.logoff()
                 break
             sys.stdout.write('\n')
@@ -111,8 +111,11 @@ class frontend:
         acct_list = []
         file = open(filename, "r")
         for line in file:
+            line = line[:-1]
             if line != "0000000":
                 acct_list.append(line)
+            else:
+                break
         file.close()
         return acct_list
 
