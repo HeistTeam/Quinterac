@@ -27,6 +27,7 @@ class atm:
 		self.WDR_LIMIT = 100000
 		self.TRA_LIMIT = 1000000
 		self.DAILY_LIMIT = 500000
+		self.deleted_accounts = []
 		return
 		
 	'''
@@ -118,7 +119,7 @@ class atm:
 	def askForAcct(self,prompt):
 		while True:
 			try:
-				accountNum = int(raw_input(prompt))
+				accountNum = raw_int(input(prompt))
 			except:
 				sys.stdout.write('Account numbers must be 7-digit numbers. Please try again.\n.')
 				continue
@@ -128,6 +129,8 @@ class atm:
 				continue
 			if tempNum not in self.account_list:
 				sys.stdout.write('This account does not currently exist. Please try another account.\n')
+			if tempNum  in self.deleted_accounts:
+				sys.stdout.write('This account has been recently deleted. Please try another account.\n')
 				continue
 			break
 		return tempNum
