@@ -4,15 +4,14 @@ login
 login
 login
 login
+NEW 1039876 *** *** MIKE
 login
 DEP 1111111 400 0000000  ***
 login
 login
 login
-NEW 1234567 *** ***3
-DEL 1 ******2
-login
-DEP 1 2 0000000  ***
 login
 WDR 00000000 123 ***
+login
+DEL 1234567 *** *** test
 EOS

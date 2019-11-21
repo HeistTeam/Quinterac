@@ -20,7 +20,7 @@ class backoffice:
     def __init__(self, account_list, summary_file):
         self.account_list = self.account_list_reader(account_list)
         self.summary_reader(summary_file)
-        self.account_writer(summary_file)
+        self.account_writer(account_list)
         
     """ account list reader function
         reads the given file, and extract the account numbers, account balances,
@@ -33,7 +33,7 @@ class backoffice:
         file = open(filename, "r")
         for line in file:
             line = line[:-1]
-            if line == '0000000':
+            if line.startswith("0") :
                 break
             acct_list.append(line.split(' '))
         file.close()
@@ -47,21 +47,21 @@ class backoffice:
     def summary_reader(self, filename):
         file = open(filename, "r")
         for line in file:
-            line = line[:1]
-            if line == 'EOS' or line == 'login':
+            lines = str(line)
+            lines = lines.split(' ')
+            if lines[0] == 'EOS' or lines[0] == 'login':
                 continue
             else:
-                line = line.split(' ')
-                if line[0] == 'DEP':
-                    self.deposit(line[1], line[2])
-                elif line[0] == 'WDR':
-                    self.withdraw(line[1], line[2])
-                elif line[0] == 'XFR':
-                    self.transfer(line[1], line[2], line[3])
-                elif line[0] == 'NEW':
-                    self.createacct(line[1], line[2])
-                elif line[0] == 'DEL':
-                    self.deleteacct(line[1], line[2])
+                if lines[0] == 'DEP':
+                    self.deposit(lines[1], lines[2])
+                elif lines[0] == 'WDR':
+                    self.withdraw(lines[1], lines[2])
+                elif lines[0] == 'XFR':
+                    self.transfer(lines[1], lines[2], lines[3])
+                elif lines[0] == 'NEW' and len(lines) >= 5:
+                    self.createacct(lines[1], lines[4])
+                elif lines[0] == 'DEL' and len(lines) >= 5:
+                    self.deleteacct(lines[1], lines[4])
 
     """ account writer function
         rewrites the account list using the current class variable list
@@ -69,22 +69,29 @@ class backoffice:
     def account_writer(self, filename):
         file = open(filename, "w")
         account_list = []
+        self.account_list.sort(key=lambda x: x[0])
         for x in range(len(self.account_list)):
             account_list.append(' '.join(self.account_list[x])) 
-        account_list = '/n'.join(account_list) 
+        account_list.append("0000000")
+        account_list = '\n'.join(account_list) 
         file.write(account_list)
             
     def createacct(self, number, name):
+        name = name.strip('\n')
+        self.account_list.append([number, "000", name])
         pass
 
     def deleteacct(self, number, name):
+        for count, account in enumerate(self.account_list):
+            if account[0] == number:
+                self.account_list.pop(count)
         pass
 
     def deposit(self, number, balance):
         pass
 
     def withdraw(self, number, balance):
-        self.deposit(number, -balance)
+        self.deposit(number, - int(balance))
 
     def transfer(self, numberfrom, balance, numberto):
         pass
