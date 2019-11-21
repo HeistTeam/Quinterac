@@ -20,7 +20,8 @@ class backoffice:
     def __init__(self, account_list, summary_file):
         self.account_list = self.account_list_reader(account_list)
         self.summary_reader(summary_file)
-        self.account_writer(account_list)
+        self.account_writer(account_list, True)
+        self.account_writer('account_list.txt', False)
         
     """ account list reader function
         reads the given file, and extract the account numbers, account balances,
@@ -65,17 +66,24 @@ class backoffice:
 
     """ account writer function
         rewrites the account list using the current class variable list
+        parameters:
+        filename: string holding the name of file to write to
+        includeall: boolean indicating if all information is to be added
+        (i.e. balances and account names)
     """
-    def account_writer(self, filename):
+    def account_writer(self, filename, includeall):
         file = open(filename, "w")
         account_list = []
         self.account_list.sort(key=lambda x: x[0])
         for x in range(len(self.account_list)):
-            account_list.append(' '.join(self.account_list[x])) 
+            if includeall == True:
+                account_list.append(' '.join(self.account_list[x]))
+            elif includeall == False:
+                account_list.append(self.account_list[x][0])
         account_list.append("0000000")
         account_list = '\n'.join(account_list) 
         file.write(account_list)
-            
+        
     def createacct(self, number, name):
         name = name.strip('\n')
         self.account_list.append([number, "000", name])
