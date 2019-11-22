@@ -1,0 +1,7 @@
+login
+NEW 1111111 *** *** Name
+logout
+login
+NEW 1039876 *** *** Name
+logout
+EOS
