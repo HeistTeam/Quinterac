@@ -99,6 +99,8 @@ class backoffice:
 		for count, account in enumerate(self.account_list):
 			if account[0] == number:
 				account[1] = account[1] + balance
+				if acccount[1] < 0:
+					sys.stdout.write('Error: account has negative balance.')
 				break
         pass
 
