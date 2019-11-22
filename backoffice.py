@@ -96,12 +96,19 @@ class backoffice:
         pass
 
     def deposit(self, number, balance):
+		for count, account in enumerate(self.account_list):
+			if account[0] == number:
+				account[1] = account[1] + balance
+				break
         pass
 
     def withdraw(self, number, balance):
         self.deposit(number, - int(balance))
+		pass
 
     def transfer(self, numberfrom, balance, numberto):
+		self.withdraw(numberfrom, balance)
+		self.deposit(numberto, balance)
         pass
 
 # main function                
