@@ -49,6 +49,8 @@ class backoffice:
         file = open(filename, "r")
         for line in file:
             lines = str(line)
+            if len(lines) > 47:
+                continue
             lines = lines.split(' ')
             if lines[0] == 'EOS' or lines[0] == 'login':
                 continue
