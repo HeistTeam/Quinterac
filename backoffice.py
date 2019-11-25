@@ -56,7 +56,7 @@ class backoffice:
                 continue
             else:
                 if lines[0] == 'DEP':
-                    self.deposit(lines[1], lines[2])
+                    temp = self.deposit(lines[1], lines[2])
                 elif lines[0] == 'WDR':
                     self.withdraw(lines[1], lines[2])
                 elif lines[0] == 'XFR':
@@ -116,18 +116,23 @@ class backoffice:
     def deposit(self, number, balance):
 		for count, account in enumerate(self.account_list):
 			if account[0] == number:
-				account[1] = account[1] + balance
-				break
-        pass
+			    newBalance = account[1] + balance
+				if newBalance < 0:
+					sys.stdout.write('Error: account would have negative balance from this transaction.')
+					return -1
+				account[1] = newBalance
+        return 0
 
     def withdraw(self, number, balance):
         self.deposit(number, - int(balance))
 		pass
 
     def transfer(self, numberfrom, balance, numberto):
-		self.withdraw(numberfrom, balance)
+		temp = self.withdraw(numberfrom, balance)
+		if temp = -1:
+			sys.stdout.write('Because source account has insufficient funds, tranfer operation is canceled.')
+			return
 		self.deposit(numberto, balance)
-        pass
 
 # main function                
 def main():
