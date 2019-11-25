@@ -86,13 +86,29 @@ class backoffice:
         
     def createacct(self, number, name):
         name = name.strip('\n')
+        for account in self.account_list:
+            if account[0] == number:
+                sys.stdout.write("Create account error: \n This account number: " + number + " already exists within database. New account was not created.\n")
+                return
         self.account_list.append([number, "000", name])
         pass
 
     def deleteacct(self, number, name):
+        name = name.strip('\n')
+        found = False
         for count, account in enumerate(self.account_list):
             if account[0] == number:
+                if account[2] != name:
+                    sys.stdout.write("Delete account error: \n Name on account does not match the name inputed.\n")
+                    return
+                if account[1] != "000":
+                    sys.stdout.write("Delete account error: \n Current balance is:" + account[1] + ". A balence must be zero before the account can be deleted.\n")
+                    return
                 self.account_list.pop(count)
+                found = True
+        if found == False:
+            sys.stdout.write("Delete account error: \n Acount with account number:" + number + " does not exist.\n")
+            return
         pass
 
     def deposit(self, number, balance):
