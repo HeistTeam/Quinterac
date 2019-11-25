@@ -49,14 +49,12 @@ class backoffice:
         file = open(filename, "r")
         for line in file:
             lines = str(line)
-            if len(lines) > 47:
-                continue
             lines = lines.split(' ')
             if lines[0] == 'EOS' or lines[0] == 'login':
                 continue
             else:
                 if lines[0] == 'DEP':
-                    self.deposit(lines[1], lines[2])
+                    temp = self.deposit(lines[1], lines[2])
                 elif lines[0] == 'WDR':
                     self.withdraw(lines[1], lines[2])
                 elif lines[0] == 'XFR':
@@ -88,46 +86,35 @@ class backoffice:
         
     def createacct(self, number, name):
         name = name.strip('\n')
-        for account in self.account_list:
-            if account[0] == number:
-                sys.stdout.write("Create account error: \n This account number: " + number + " already exists within database. New account was not created.\n")
-                return
         self.account_list.append([number, "000", name])
         pass
 
     def deleteacct(self, number, name):
-        name = name.strip('\n')
-        found = False
         for count, account in enumerate(self.account_list):
             if account[0] == number:
-                if account[2] != name:
-                    sys.stdout.write("Delete account error: \n Name on account does not match the name inputed.\n")
-                    return
-                if account[1] != "000":
-                    sys.stdout.write("Delete account error: \n Current balance is:" + account[1] + ". A balence must be zero before the account can be deleted.\n")
-                    return
                 self.account_list.pop(count)
-                found = True
-        if found == False:
-            sys.stdout.write("Delete account error: \n Acount with account number:" + number + " does not exist.\n")
-            return
         pass
 
     def deposit(self, number, balance):
 		for count, account in enumerate(self.account_list):
 			if account[0] == number:
-				account[1] = account[1] + balance
-				break
-        pass
+			    newBalance = account[1] + balance
+				if newBalance < 0:
+					sys.stdout.write('Error: account would have negative balance from this transaction.')
+					return -1
+				account[1] = newBalance
+        return 0
 
     def withdraw(self, number, balance):
-        self.deposit(number, - int(balance))
+        temp = self.deposit(number, - int(balance))
 		pass
 
     def transfer(self, numberfrom, balance, numberto):
-		self.withdraw(numberfrom, balance)
+		temp = self.withdraw(numberfrom, balance)
+		if temp = -1:
+			sys.stdout.write('Because source account has insufficient funds, tranfer operation is canceled.')
+			return
 		self.deposit(numberto, balance)
-        pass
 
 # main function                
 def main():
