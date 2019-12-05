@@ -32,14 +32,14 @@ class frontend:
         sys.stdout.write('Welcome to Quinterac Banking System.' + '\n')
         while True:
             sys.stdout.write('To start a session, please enter login.')
-            i = raw_input('\n')
+            i = input('\n') ##############################
             if i == 'login':
                 self.summary_writer('login')
                 break
             sys.stdout.write("Invalid input!")
             
         while True:
-            i = raw_input('Please enter the type of banking today: agent or machine: ')
+            i = input('Please enter the type of banking today: agent or machine: ')##############################
             if i == 'agent' or i == 'machine':
                 break
             sys.stdout.write('Please enter a valid banking type.')
@@ -57,7 +57,7 @@ class frontend:
             elif self.mode == 'machine':
                 sys.stdout.write('Please enter the transaction you would like:' + '\n')
                 sys.stdout.write('transfer, deposit, withdraw, logout')
-            i = raw_input('\n')
+            i = input('\n')##############################
             if i == 'createacct':
                 create = session.createacct()
                 if create != 0:

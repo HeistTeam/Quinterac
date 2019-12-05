@@ -38,7 +38,7 @@ class agent(atm.atm):
 		newaccount  = self.askForNewAcct('Please enter the account number for new account: ')
 		newname = self.askForName('Please enter the account name for new account: ') 
 
-		depString = "NEW " + str(newaccount) + ' ' + '***' + ' ' + '***' + str(newname)
+		depString = "NEW " + str(newaccount) + ' ' + '***' + ' ' + '*** ' + str(newname)
 
 		sys.stdout.write('New account created with account number: ' + newaccount + ' and account name: ' + newname)
 
@@ -56,7 +56,7 @@ class agent(atm.atm):
 		deleteaccount = self.askForDelAcct('Please enter the account number for the account you would like to delete: ')
 		deletename = self.askForName('Please enter the account name for the account you would like to delete: ')
 
-		depString = 'DEL ' + str(deleteaccount) + ' ' + '***' + '***' + str(deletename)
+		depString = 'DEL ' + str(deleteaccount) + ' ' + '*** ' + '*** ' + str(deletename)
 
 		self.deleted_accounts.append(deleteaccount)
 
@@ -70,7 +70,7 @@ class agent(atm.atm):
 	def askForNewAcct(self,prompt):
 		while True:
 			try:
-				accountNum = int(raw_input(prompt))
+				accountNum = int(input(prompt))
 			except:
 				sys.stdout.write('Account numbers must be 7-digit numbers. Please try again.\n.')
 				continue
@@ -92,7 +92,7 @@ class agent(atm.atm):
 	def askForDelAcct(self,prompt):
 		while True:
 			try:
-				accountNum = int(raw_input(prompt))
+				accountNum = int(input(prompt))
 			except:
 				sys.stdout.write('Account numbers must be 7-digit numbers. Please try again.\n.')
 				continue
@@ -113,7 +113,7 @@ class agent(atm.atm):
 	'''
 	def askForName(self,prompt):
 		while True:
-			accountName = raw_input(prompt)
+			accountName = input(prompt)
 		
 			if len(accountName) < 3 or len(accountName) > 30:
 				sys.stdout.write('Account Name must be between 3 and 30 digits long. Please try again.\n')

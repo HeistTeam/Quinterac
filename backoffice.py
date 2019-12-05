@@ -125,15 +125,15 @@ class backoffice:
 
     def withdraw(self, number, balance):
         self.deposit(number, - int(balance))
-	pass
+        pass
 
     def transfer(self, numberfrom, balance, numberto):
-		temp = self.withdraw(numberfrom, balance)
-		if temp == -1:
-			sys.stdout.write('Because source account has insufficient funds, tranfer operation is canceled.')
-			return
-		self.deposit(numberto, balance)
-
+        temp = self.withdraw(numberfrom, balance)
+        if temp == -1:
+            sys.stdout.write('Because source account has insufficient funds, tranfer operation is canceled.')
+            return 
+        self.deposit(numberto, balance)
+        
 # main function                
 def main():
     f = backoffice(sys.argv[1], sys.argv[2])

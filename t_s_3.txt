@@ -1,5 +1,3 @@
 login
-DEL 1234567 ******mee
-EOSlogin
-EOSlogin
+DEL 1039876 *** *** testing
 EOS
