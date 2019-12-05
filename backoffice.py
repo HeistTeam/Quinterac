@@ -116,7 +116,7 @@ class backoffice:
     def deposit(self, number, balance):
         for count, account in enumerate(self.account_list):
             if account[0] == number:
-                newBalance = account[1] + balance
+                newBalance = account[1] + int(balance)
                 if newBalance < 0:
                     sys.stdout.write('Error: account would have negative balance from this transaction.')
                     return -1
