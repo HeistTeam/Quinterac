@@ -119,9 +119,9 @@ class atm:
 	def askForAcct(self,prompt):
 		while True:
 			try:
-				accountNum = raw_int(input(prompt))
+				accountNum = int(input(prompt))
 			except:
-				sys.stdout.write('Account numbers must be 7-digit numbers. Please try again.\n.')
+				sys.stdout.write('Account numbers must be 7-digit numbers. Please try again.\n')
 				continue
 			tempNum = str(accountNum)
 			if len(tempNum) != 7 or tempNum[0] == '0':
@@ -129,6 +129,7 @@ class atm:
 				continue
 			if tempNum not in self.account_list:
 				sys.stdout.write('This account does not currently exist. Please try another account.\n')
+                                continue
 			if tempNum  in self.deleted_accounts:
 				sys.stdout.write('This account has been recently deleted. Please try another account.\n')
 				continue
