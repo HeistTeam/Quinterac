@@ -10,8 +10,8 @@ def main():
             concatfile('t_s_', 3)
             backoffice.backoffice('master_account_list.txt', 'merged_transaction.txt')
             counter = 0
-            #file = open('merged_transaction.txt', 'w+')
-            #file.close()
+            file = open('merged_transaction.txt', 'w+')
+            file.close()
             break
             
 def concatfile(filename, filenumber):
@@ -23,8 +23,8 @@ def concatfile(filename, filenumber):
         for line in file2:
             file.write(line)
         file2.close()
-        # file3 = open(filename + str(filenumber) + '.txt', 'w+')
-        # file3.close()
+        file3 = open(filename + str(filenumber) + '.txt', 'w+')
+        file3.close()
     file.write('\n')
     file.write('EOS')
     file.close()
