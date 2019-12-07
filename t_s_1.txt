@@ -1,9 +1,3 @@
 login
-login
-NEW 1234568 *** ***mee
-login
-DEP 1234567 500 0000000  ***
-EOSlogin
-DEP 1234567 500 0000000  ***
-EOSlogin
+NEW 7654321 *** *** Testin1
 EOS

@@ -49,7 +49,7 @@ class atm:
 				break
 		sys.stdout.write('You have successfully deposited ' + str(depAmount) +' cents to account: '+destAccount)
 		#here we set up the transaction string
-		depString = 'DEP ' + str(destAccount) + ' ' +  str(depAmount) + ' ' + '0000000  ***'
+		depString = 'DEP ' + str(destAccount) + ' ' +  str(depAmount) + ' ' + '*** ***'
 		return depString
 		
 	'''
@@ -129,7 +129,7 @@ class atm:
 				continue
 			if tempNum not in self.account_list:
 				sys.stdout.write('This account does not currently exist. Please try another account.\n')
-                                continue
+				continue
 			if tempNum  in self.deleted_accounts:
 				sys.stdout.write('This account has been recently deleted. Please try another account.\n')
 				continue
@@ -143,7 +143,7 @@ class atm:
 	def askForMoney(self,prompt,limit):
 		while True:
 			try:
-				money = int(raw_input(prompt))
+				money = int(input(prompt))
 			except:
 				sys.stdout.write('Your inputted amount contained non-numeric characters. Please try again.\n')
 				continue

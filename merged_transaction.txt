@@ -1,0 +1,11 @@
+login
+NEW 7654321 *** *** Testing1
+TRA 2345678 100 1111111 ***
+EOS
+login
+DEP 2345678 100 *** ***
+EOS
+login
+DEL 1039876 *** *** testing
+EOS
+EOS
